@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+/* Wallet adapter overrides */
+.wallet-adapter-button {
+  height: 40px !important;
+  padding: 0 24px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+}
+
+.wallet-adapter-button-trigger {
+  background: linear-gradient(to right, #3b82f6, #7e22ce) !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+.wallet-adapter-dropdown-list {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+  color: #e5e7eb !important;
+  transition: all 0.2s !important;
+}
+
+.wallet-adapter-dropdown-list-item:hover {
+  background-color: #334155 !important;
+}
+
+/* Custom styles removed temporarily */
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-secondary-600 hover:bg-secondary-700 text-white font-semibold rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-gray-800 rounded-xl p-6 shadow-lg;
+  }
+  
+  .input {
+    @apply bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary-500;
+  }
+
+  /* Custom glassmorphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  }
+
+  /* Gradient borders */
+  .gradient-border {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.5rem;
+    padding: 2px;
+    background: linear-gradient(120deg, #3a7bd5, #00d2ff, #6f42c1);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Animated background */
+  .animated-bg {
+    background: linear-gradient(-45deg, #13293D, #006494, #247BA0, #1B98E0);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Custom button styles */
+  .btn-glow {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: -1;
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    to {
+      left: 100%;
+    }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(31, 41, 55, 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 41, 55, 0.7);
+  }
+}
+
+/* Fix for NextUI buttons with content */
+.nextui-button-text {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+}
+
+/* Additional fixes for mobile */
+@media (max-width: 640px) {
+  .wallet-adapter-button {
+    padding: 0 12px !important;
+    font-size: 14px !important;
+  }
+} 

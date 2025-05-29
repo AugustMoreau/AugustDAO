@@ -1,0 +1,23 @@
+[package]
+name = "treasury"
+version = "0.1.0"
+description = "AugustDAO Treasury Program"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "treasury"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.28.0"
+anchor-spl = "0.28.0"
+solana-program = "1.16.0"
+spl-token = { version = "4.0.0", features = ["no-entrypoint"] }
+spl-associated-token-account = { version = "2.0.0", features = ["no-entrypoint"] } 
